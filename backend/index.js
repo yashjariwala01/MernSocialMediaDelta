@@ -50,12 +50,6 @@ const storage = multer.diskStorage({
   app.use('/users', userRoutes)
   app.use('/posts', postRoutes)
 
-  app.listen(process.env.PORT, ()=>{
-    console.log('server running at PORT', process.env.PORT);
-  })
-  console.log('PORT', process.env.PORT)
-
-
   app.listen(3001, ()=>{
     console.log('server running at PORT', 3001);
 
