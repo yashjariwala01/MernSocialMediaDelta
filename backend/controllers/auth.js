@@ -2,8 +2,9 @@ import bcryptjs from 'bcryptjs'
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js'
 
-export const register = async (req,res)=>{
 
+export const register = async (req,res)=>{
+    console.log(req.body);
     try{
         const { firstName,
                 lastName,
@@ -52,8 +53,12 @@ try{
 
     const token = jwt.sign({id: user._id}, 'JWT_SECRET');
     delete user.password;
+    const response = {
+        token,
+        user
+    }
 
-    res.status(200).json({token,user})
+    res.status(200).json(response)
 }catch(err){
     res.status(500).json({error :err.message})
 }

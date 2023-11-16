@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -83,10 +83,13 @@ const Form = () => {
   const login = async (values, onSubmitProps) => {
     const loggedInResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", Cookie :'123'},
       body: JSON.stringify(values),
     });
     const loggedIn = await loggedInResponse.json();
+    localStorage.setItem('user', JSON.stringify(loggedIn))
+    console.log(loggedIn, loggedInResponse.status);
+    
     onSubmitProps.resetForm();
     if (loggedIn) {
       dispatch(
@@ -201,6 +204,7 @@ const Form = () => {
                         ) : (
                           <FlexBetween>
                             <Typography>{values.picture.name}</Typography>
+                            {console.log(values.picture.name)}
                             <EditOutlinedIcon />
                           </FlexBetween>
                         )}
