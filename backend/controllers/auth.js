@@ -15,6 +15,8 @@ export const register = async (req,res)=>{
                 location,
                 occupation
                 } = req.body;
+                
+                console.log(picturePath)
 
         // const salt = bcryptjs.genSalt(12);
         const salt = 12;

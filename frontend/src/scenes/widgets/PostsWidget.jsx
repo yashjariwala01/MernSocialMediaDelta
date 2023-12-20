@@ -10,7 +10,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   
 
  
-  console.log('posts',posts)
+  // console.log('posts',posts)
 
 
   const getPosts = async () => {
@@ -33,6 +33,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     const data = await response.json();
     dispatch(setPosts({ posts: data }));
   };
+  console.log(posts);
 
   useEffect(() => {
     if (isProfile) {
@@ -40,7 +41,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     } else {
       getPosts();
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
